@@ -21,7 +21,7 @@ var (
 func udpAddr(addr string) *net.UDPAddr {
 	raddr, err := net.ResolveUDPAddr("udp", addr)
 	if err != nil {
-		log.Fatalln(err)
+		log.Fatalln("failed addr", err)
 	}
 	return raddr
 }
