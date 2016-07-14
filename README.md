@@ -1,5 +1,12 @@
 #NETWORK - golang udp wrapper over *net* package 
 
+
+##INSTALL
+
+	`go get github.com/sg3des/network`
+
+##USAGE
+
 Support two operating methods:
 	
 1. network return connection and use this connection for send messages
@@ -21,3 +28,6 @@ Support two operating methods:
 	```
 
 internal variable(second method) allow send reply from different packages
+
+
+for details see example
