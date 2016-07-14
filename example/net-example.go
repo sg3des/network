@@ -40,10 +40,12 @@ func main() {
 }
 
 func server() {
-	_, err := network.Server(":1208") //conn,err := ...
+	_, err := network.Server(":1208") //or may conn,err := ...
 	if err != nil {
 		log.Fatal(err)
 	}
+
+	network.SetRPC(&Packet{})
 	// conn.Reply(data)
 
 	time.Sleep(10 * time.Second)
@@ -51,7 +53,7 @@ func server() {
 }
 
 func client() {
-	_, err := network.Client(":1208") //conn,err := ...
+	_, err := network.Client(":1208") //or may conn,err := ...
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -59,7 +61,7 @@ func client() {
 	p := NewPacket("client", "hi i`m client")
 
 	// conn.Reply(username, data)
-	network.Reply(p.Bytes())
+	network.Reply("Packet.RemoteCall", p.bytes())
 	time.Sleep(5 * time.Second)
 	log.Println("exit")
 }
@@ -71,6 +73,7 @@ type Packet struct {
 	Data      string
 }
 
+//NewPacket create packet
 func NewPacket(username, data string) Packet {
 	return Packet{
 		Timestamp: time.Now().UTC(),
@@ -79,8 +82,8 @@ func NewPacket(username, data string) Packet {
 	}
 }
 
-//Bytes convert packet to bytes for send it - json
-func (p *Packet) Bytes() []byte {
+//bytes convert packet to bytes for send it - json
+func (p *Packet) bytes() []byte {
 	data, _ := json.Marshal(p)
 	return data
 }

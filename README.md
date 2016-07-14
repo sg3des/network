@@ -1,6 +1,9 @@
 #NETWORK - golang udp wrapper over *net* package 
 
 
+This package implements doublesided RPC(Remote procedure call) over udp connection. 
+
+
 ##INSTALL
 
 	go get github.com/sg3des/network
