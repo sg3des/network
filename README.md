@@ -3,7 +3,7 @@
 
 ##INSTALL
 
-	`go get github.com/sg3des/network`
+	go get github.com/sg3des/network
 
 ##USAGE
 
